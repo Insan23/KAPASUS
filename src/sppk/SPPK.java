@@ -18,7 +18,7 @@ public class SPPK {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int penjualan[][], nilaiX = 0, dekremen = -1, hari = 0, ramal, X;
+        int penjualan[][], nilaiX = 0, dekremen = -1, hari = 0, ramal, X, batas;
         boolean mulaiMeramal = false;
         double nilaiA = 0, nilaiB = 0, jumlahY = 0, jumlahXY = 0, jumlahXX = 0;
 
@@ -85,7 +85,8 @@ public class SPPK {
         }
         if (mulaiMeramal) {
             X = penjualan[hari - 1][1];
-            for (int i = 0; i < (ramal - hari); i++) {
+            batas = ramal - hari;
+            for (int i = 0; i < batas; i++) {
                 X++;
                 System.out.println("peramalan pada hari ke " + (hari + 1) + " : " + (nilaiA + (nilaiB * X)));
                 hari++;
