@@ -55,10 +55,10 @@ public class SPPK {
             jumlahXY += penjualan[i][0] * penjualan[i][1];
             jumlahXX += penjualan[i][1] * penjualan[i][1];
         }
-        
+
         nilaiA = jumlahY / penjualan.length;
         nilaiB = jumlahXY / jumlahXX;
-        
+
         /**
          * cetak data
          */
@@ -72,23 +72,27 @@ public class SPPK {
                     + "\t\t|");
         }
         System.out.println("| Jumlah\t| " + jumlahY + "\t|\t| " + jumlahXY + "\t| " + jumlahXX + "\t\t|");
-        
-        System.out.println("\nRumus Least Square dari data tersebut adalah:\nY = a + bX\nY = " + nilaiA + " + " + nilaiB);
-        
-        System.out.println("peramalan pada hari ke 8");
-        
-        System.out.println("peramalan pada hari ke 9");
-        
-        System.out.println("peramalan pada hari ke 10");
-        
-        System.out.println("peramalan pada hari ke 11");
-        
-        System.out.println("peramalan pada hari ke 12");
-        
-        System.out.println("peramalan pada hari ke 13");
-        
-        System.out.println("peramalan pada hari ke 14");
-        
+
+        System.out.println("\nRumus Least Square dari data tersebut adalah:"
+                + "\nY = a + bX"
+                + "\nY = " + nilaiA + " + " + nilaiB + "X");
+        System.out.println("Ingin melihat peramalan hingga hari ke berapa? (diatas hari ke 7)");
+        boolean mulaiMeramal = false;
+        int ramal = input.nextInt();
+        if (ramal < 8) {
+            System.out.println("harus diatas hari ke 7");
+        } else {
+            mulaiMeramal = true;
+        }
+        if (mulaiMeramal) {
+            int X = penjualan[6][1];
+            for (int i = 0; i < (ramal - 7); i++) {
+                X++;
+                System.out.println("peramalan pada hari ke " + (hari + 2) + " : " + (nilaiA + (nilaiB * X)));
+                hari++;
+            }
+        }
+
     }
 
 }
