@@ -35,6 +35,7 @@ public class SPPK {
             nilaiX = (hari - 1) * -1;
             dekremen = 2;
         }
+        hari = 0;
         for (int i = nilaiX; i < (nilaiX * -1) + 1; i += dekremen) {
             System.out.println("Input penjualan hari ke - " + (hari + 1));
             penjualan[hari][0] = input.nextInt();
@@ -75,16 +76,16 @@ public class SPPK {
          * peramalan
          */
         System.out.println("\n\n\n");
-        System.out.println("Ingin melihat peramalan hingga hari ke berapa? (diatas hari ke 7)");
+        System.out.println("Ingin melihat peramalan hingga hari ke berapa? (diatas hari ke " + hari + ")");
         ramal = input.nextInt();
-        if (ramal < 8) {
-            System.out.println("harus diatas hari ke 7");
+        if (ramal < hari + 1) {
+            System.out.println("harus diatas hari ke " + hari);
         } else {
             mulaiMeramal = true;
         }
         if (mulaiMeramal) {
-            X = penjualan[6][1];
-            for (int i = 0; i < (ramal - 7); i++) {
+            X = penjualan[hari - 1][1];
+            for (int i = 0; i < (ramal - hari); i++) {
                 X++;
                 System.out.println("peramalan pada hari ke " + (hari + 1) + " : " + (nilaiA + (nilaiB * X)));
                 hari++;
