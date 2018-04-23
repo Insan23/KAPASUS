@@ -18,14 +18,15 @@ public class SPPK {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int penjualan[][];
-        int nilaiX = 0;
-        int dekremen = -1;
-
+        int penjualan[][], nilaiX = 0, dekremen = -1, hari = 0, ramal, X;
+        boolean mulaiMeramal = false;
         double nilaiA = 0, nilaiB = 0, jumlahY = 0, jumlahXY = 0, jumlahXX = 0;
 
+        /**
+         * input data
+         */
         System.out.println("Input Jumlah hari penjualan : ");
-        int hari = input.nextInt();
+        hari = input.nextInt();
         penjualan = new int[hari][2];
         if (hari % 2 == 1) {
             nilaiX = ((hari - 1) / 2) * -1;
@@ -34,12 +35,6 @@ public class SPPK {
             nilaiX = (hari - 1) * -1;
             dekremen = 2;
         }
-
-        hari = 0;
-
-        /**
-         * input data
-         */
         for (int i = nilaiX; i < (nilaiX * -1) + 1; i += dekremen) {
             System.out.println("Input penjualan hari ke - " + (hari + 1));
             penjualan[hari][0] = input.nextInt();
@@ -55,13 +50,13 @@ public class SPPK {
             jumlahXY += penjualan[i][0] * penjualan[i][1];
             jumlahXX += penjualan[i][1] * penjualan[i][1];
         }
-
         nilaiA = jumlahY / penjualan.length;
         nilaiB = jumlahXY / jumlahXX;
 
         /**
          * cetak data
          */
+        System.out.println("\n\n\n");
         System.out.println("| Hari\t\t| Penjualan(Y)\t| X\t| XY\t| X kuadrat\t|");
         for (int i = 0; i < penjualan.length; i++) {
             System.out.println("| Hari - " + (i + 1)
@@ -72,27 +67,29 @@ public class SPPK {
                     + "\t\t|");
         }
         System.out.println("| Jumlah\t| " + jumlahY + "\t|\t| " + jumlahXY + "\t| " + jumlahXX + "\t\t|");
-
         System.out.println("\nRumus Least Square dari data tersebut adalah:"
                 + "\nY = a + bX"
                 + "\nY = " + nilaiA + " + " + nilaiB + "X");
+
+        /**
+         * peramalan
+         */
+        System.out.println("\n\n\n");
         System.out.println("Ingin melihat peramalan hingga hari ke berapa? (diatas hari ke 7)");
-        boolean mulaiMeramal = false;
-        int ramal = input.nextInt();
+        ramal = input.nextInt();
         if (ramal < 8) {
             System.out.println("harus diatas hari ke 7");
         } else {
             mulaiMeramal = true;
         }
         if (mulaiMeramal) {
-            int X = penjualan[6][1];
+            X = penjualan[6][1];
             for (int i = 0; i < (ramal - 7); i++) {
                 X++;
-                System.out.println("peramalan pada hari ke " + (hari + 2) + " : " + (nilaiA + (nilaiB * X)));
+                System.out.println("peramalan pada hari ke " + (hari + 1) + " : " + (nilaiA + (nilaiB * X)));
                 hari++;
             }
         }
-
     }
 
 }
